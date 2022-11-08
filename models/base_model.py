@@ -26,7 +26,7 @@ class BaseModel:
         String representation of Base Model
         """
         return "[" + self.__class__.__name__ + \
-                "] (<" + self.id + ">) <" + str(self.__dict__) + ">"
+            "] (<" + self.id + ">) <" + str(self.__dict__) + ">"
 
     def save(self):
         """
