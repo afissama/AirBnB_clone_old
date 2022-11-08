@@ -19,7 +19,7 @@ class BaseModel:
         Called when a BaseModel object is created
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.today()
+        self.created_at = datetime.utcnow()
         self.update_at = copy.deepcopy(self.created_at)
 
     def __str__(self):
@@ -34,7 +34,7 @@ class BaseModel:
         Updates the public instance attribute
         update_at with the current datetime
         """
-        self.update_at = datetime.today()
+        self.update_at = datetime.utcnow()
 
     def to_dict(self):
         """

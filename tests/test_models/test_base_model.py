@@ -22,14 +22,14 @@ class TestBase(unittest.TestCase):
         Test current date value
         """
         base1 = BaseModel()
-        self.assertEqual(base1.created_at.replace(microsecond=0), datetime.today().replace(microsecond=0))
+        self.assertEqual(base1.created_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
     def test_update_date(self):
         """
         Test update date value
         """
         base1 = BaseModel()
-        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.today().replace(microsecond=0))
+        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
     def test_update_after_save_date(self):
         """
@@ -38,7 +38,7 @@ class TestBase(unittest.TestCase):
         base1 = BaseModel()
         time.sleep(2)
         base1.save()
-        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.today().replace(microsecond=0))
+        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
     def test_to_dict(self):
         """
