@@ -6,6 +6,7 @@ Classes
 """
 from datetime import datetime
 import uuid
+import copy
 
 
 class BaseModel:
@@ -39,8 +40,11 @@ class BaseModel:
         """
         Returns a dictionary containing all keys/values of dict
         """
-        temp = self.__dict__
-        temp['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        temp['update_at'] = self.update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        temp = copy.deepcopy(self.__dict__)
+
         temp['__class__'] = self.__class__.__name__
+        temp['update_at'] = self.update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        temp['id'] = self.id
+        temp['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+
         return temp
