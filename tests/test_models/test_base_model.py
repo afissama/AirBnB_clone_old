@@ -29,7 +29,7 @@ class TestBase(unittest.TestCase):
         Test update date value
         """
         base1 = BaseModel()
-        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
+        self.assertEqual(base1.updated_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
     def test_update_after_save_date(self):
         """
@@ -38,7 +38,7 @@ class TestBase(unittest.TestCase):
         base1 = BaseModel()
         time.sleep(2)
         base1.save()
-        self.assertEqual(base1.update_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
+        self.assertEqual(base1.updated_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
     def test_to_dict(self):
         """
@@ -50,7 +50,7 @@ class TestBase(unittest.TestCase):
         _to_dict = copy.deepcopy(base1.__dict__)
 
         _to_dict['__class__'] = "BaseModel"
-        _to_dict['update_at'] = base1.update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        _to_dict['updated_at'] = base1.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         _to_dict['id'] = base1.id
         _to_dict['created_at'] = base1.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
 

@@ -20,7 +20,7 @@ class BaseModel:
         """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
-        self.update_at = copy.deepcopy(self.created_at)
+        self.updated_at = copy.deepcopy(self.created_at)
 
     def __str__(self):
         """
@@ -32,9 +32,9 @@ class BaseModel:
     def save(self):
         """
         Updates the public instance attribute
-        update_at with the current datetime
+        updated_at with the current datetime
         """
-        self.update_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
     def to_dict(self):
         """
@@ -43,7 +43,7 @@ class BaseModel:
         temp = copy.deepcopy(self.__dict__)
 
         temp['__class__'] = self.__class__.__name__
-        temp['update_at'] = self.update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        temp['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         temp['id'] = self.id
         temp['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
 
