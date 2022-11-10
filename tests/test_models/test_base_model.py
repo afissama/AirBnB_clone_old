@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Unittest for base class
 """
+import os
 import unittest
+import models
 from models.base_model import BaseModel
 from datetime import datetime
 import time
@@ -36,7 +38,7 @@ class TestBase(unittest.TestCase):
         Test update date value
         """
         base1 = BaseModel()
-        time.sleep(2)
+        time.sleep(1)
         base1.save()
         self.assertEqual(base1.updated_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
 
@@ -66,3 +68,36 @@ class TestBase(unittest.TestCase):
         _to_str = "[" + base1.__class__.__name__ + \
             "] (" + base1.id + ") " + str(base1.__dict__)
         self.assertEqual(str(base1), _to_str)
+
+    def test_init_with_arg(self):
+        """
+        Test if **argv param
+        is used as espected
+        """
+        if (os.path.isfile("file.json")):
+            os.remove("file.json")
+
+        base0 = BaseModel()
+        base0.name = "TestCase"
+        base0.age = "No"
+        basejson = base0.to_dict()
+    
+        base1 = BaseModel(**basejson)
+        self.assertEqual(base1.name, "TestCase")
+        self.assertTrue("BaseModel.{}".format(base1.id) in models.storage.all())
+
+    def test_save_withstorage(self):
+        """
+        """
+        if (os.path.isfile("file.json")):
+            os.remove("file.json")
+
+        base0 = BaseModel()
+        base0.name = "TestCase"
+        base0.age = "No"
+        time.sleep(1)
+
+        base0.save()
+        models.storage.reload()
+        objs = models.storage.all()
+        self.assertEqual(objs["BaseModel.{}".format(base0.id)].updated_at, base0.updated_at)
