@@ -62,17 +62,17 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         """
+        Test the reload func
         """
         if (os.path.isfile("file.json")):
             os.remove("file.json")
 
         base_0 = BaseModel()
         base_1 = BaseModel()
-        tmp_storage = FileStorage()
-        tmp_storage.new(base_0)
-        tmp_storage.new(base_1)
-        tmp_storage.save()
-        tmp_storage.reload()
-        loads_obj = tmp_storage.all()
+        models.storage.new(base_0)
+        models.storage.new(base_1)
+        models.storage.save()
+        models.storage.reload()
+        loads_obj = models.storage.all()
         self.assertTrue("BaseModel.{}".format(base_0.id) in loads_obj.keys())
         self.assertTrue("BaseModel.{}".format(base_1.id) in loads_obj.keys())

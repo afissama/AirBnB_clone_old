@@ -88,6 +88,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_withstorage(self):
         """
+        Test if save worked as expected
         """
         if (os.path.isfile("file.json")):
             os.remove("file.json")
