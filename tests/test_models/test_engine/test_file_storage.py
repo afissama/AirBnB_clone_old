@@ -76,3 +76,11 @@ class TestFileStorage(unittest.TestCase):
         loads_obj = models.storage.all()
         self.assertTrue("BaseModel.{}".format(base_0.id) in loads_obj.keys())
         self.assertTrue("BaseModel.{}".format(base_1.id) in loads_obj.keys())
+
+    def test_reload_no_file(self):
+        """
+        Reload
+        """
+        objs = models.storage.all()
+        models.storage.reload()
+        self.assertEqual(objs, models.storage.all())
