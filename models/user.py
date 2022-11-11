@@ -11,13 +11,13 @@ class User(BaseModel):
             firstname: str
             last_name: str
     """
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
 
     def __init__(self, *args, **kwargs):
         """Call when instantiate the object"""
-        self.email = ""
-        self.password = ""
-        self.first_name = ""
-        self.last_name = ""
         if len(kwargs):
             super().__init__(**kwargs)
             return
