@@ -70,8 +70,7 @@ class TestFileStorage(unittest.TestCase):
             }, f)
 
         models.storage.reload()
-        loads_obj = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel." + base_0.id, loads_obj.keys())
+        self.assertIn("BaseModel." + base_0.id, models.storage.all().keys())
 
     def test_FileStorage_objects_is_private_attribute(self):
         """
