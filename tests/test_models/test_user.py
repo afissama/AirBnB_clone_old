@@ -14,3 +14,5 @@ class TestUser(unittest.TestCase):
         user = User()
         User.email = "my@enemy.com"
         self.assertEqual(user.email, "my@enemy.com")
+        self.assertEqual(User.email, "my@enemy.com")
+        self.assertEqual(type(User.email), str)
