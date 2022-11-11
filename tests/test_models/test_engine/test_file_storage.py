@@ -93,10 +93,5 @@ class TestFileStorage(unittest.TestCase):
             fs = FileStorage()
             print(fs.__objects)
 
-    def testFileStorage_file_path_is_private_attribute(self):
-        """
-        Test if attribute is private
-        """
-        with self.assertRaises(AttributeError):
-            fs = FileStorage()
-            print(fs.__file_path)
+    def test_FileStorage_file_path_is_private_str(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
