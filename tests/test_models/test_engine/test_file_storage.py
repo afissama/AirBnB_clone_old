@@ -63,8 +63,12 @@ class TestFileStorage(unittest.TestCase):
             os.remove("file.json")
 
         base_0 = BaseModel()
-        models.storage.new(base_0)
-        models.storage.save()
+
+        with open("file.json", "w") as f:
+            json.dump({
+                "BaseModel." + base_0.id: base_0.to_dict(),
+            }, f)
+
         models.storage.reload()
         loads_obj = FileStorage._FileStorage__objects
         self.assertIn("BaseModel." + base_0.id, loads_obj.keys())
