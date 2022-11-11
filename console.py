@@ -101,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         setattr(models.storage.all()[id], nb_args[2], type(attr)(nb_args[3]))
+        models.storage.all()[id].save()
         models.storage.save()
 
     def emptyline(self):
