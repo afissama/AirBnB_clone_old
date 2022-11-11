@@ -15,11 +15,6 @@ class TestFileStorage(unittest.TestCase):
     Test FileStorage method
     """
 
-    def test_objs(self):
-        """
-        Test file storage instantiation
-        """
-
     def test_all(self):
         """
         Test all
@@ -72,8 +67,7 @@ class TestFileStorage(unittest.TestCase):
         models.storage.save()
         models.storage.reload()
         loads_obj = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel." + base_0.id, loads_obj)
-
+        self.assertIn("BaseModel." + base_0.id, loads_obj.keys())
 
     def test_FileStorage_objects_is_private_attribute(self):
         """
