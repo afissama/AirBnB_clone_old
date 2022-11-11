@@ -26,3 +26,4 @@ class TestUser(unittest.TestCase):
         User.password = "password.com"
         self.assertEqual(user.password, User.password)
         self.assertEqual(str, type(User.password))
+        self.assertIsNotNone(User.password)
