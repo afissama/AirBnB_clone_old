@@ -102,3 +102,10 @@ class TestBase(unittest.TestCase):
         models.storage.reload()
         objs = models.storage.all()
         self.assertEqual(objs["BaseModel.{}".format(base0.id)].updated_at, base0.updated_at)
+    
+    def test_save_updates_file(self):
+        bm = BaseModel()
+        bm.save()
+        bmid = "BaseModel." + bm.id
+        with open("file.json", "r") as f:
+            self.assertIn(bmid, f.read())

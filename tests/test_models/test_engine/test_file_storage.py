@@ -68,24 +68,15 @@ class TestFileStorage(unittest.TestCase):
             os.remove("file.json")
 
         base_0 = BaseModel()
-        base_1 = BaseModel()
         models.storage.new(base_0)
-        models.storage.new(base_1)
         models.storage.save()
         models.storage.reload()
         loads_obj = models.storage.all()
-        self.assertTrue("BaseModel.{}".format(base_0.id) in loads_obj.keys())
-        self.assertTrue("BaseModel.{}".format(base_1.id) in loads_obj.keys())
+        loads_obj = FileStorage._FileStorage__objects
+        self.assertIn("BaseModel." + base_0.id, loads_obj)
 
-    def test_reload_no_file(self):
-        """
-        Reload
-        """
-        objs = models.storage.all()
-        models.storage.reload()
-        self.assertEqual(objs, models.storage.all())
 
-    def testFileStorage_objects_is_private_attribute(self):
+    def test_FileStorage_objects_is_private_attribute(self):
         """
         Test if attribute is private
         """
