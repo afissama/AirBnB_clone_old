@@ -24,5 +24,5 @@ class TestUser(unittest.TestCase):
         """
         user = User()
         User.password = "password.com"
-        self.assertEqual(user.email, User.password)
+        self.assertEqual(user.password, User.password)
         self.assertEqual(str, type(User.password))
