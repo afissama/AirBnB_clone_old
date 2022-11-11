@@ -84,3 +84,19 @@ class TestFileStorage(unittest.TestCase):
         objs = models.storage.all()
         models.storage.reload()
         self.assertEqual(objs, models.storage.all())
+
+    def testFileStorage_objects_is_private_attribute(self):
+        """
+        Test if attribute is private
+        """
+        with self.assertRaises(AttributeError):
+            fs = FileStorage()
+            print(fs.__objects)
+
+    def testFileStorage_file_path_is_private_attribute(self):
+        """
+        Test if attribute is private
+        """
+        with self.assertRaises(AttributeError):
+            fs = FileStorage()
+            print(fs.__file_path)
