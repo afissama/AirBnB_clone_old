@@ -12,5 +12,5 @@ class TestUser(unittest.TestCase):
 
     def test_mail(self):
         user = User()
-        user.email = "my@enemy.com"
+        User.email = "my@enemy.com"
         self.assertEqual(user.email, "my@enemy.com")
