@@ -91,18 +91,9 @@ class HBNBCommand(cmd.Cmd):
         if nb_args[2] in ["id", "created_at", "updated_at"]:
             return
 
-        attr = None
-        try:
-            attr = getattr(models.storage.all()[id], nb_args[2])
-        except AttributeError:
-            return
-
-        if not type(attr) in [str, int, float]:
-            return
-
-        setattr(models.storage.all()[id], nb_args[2], type(attr)(nb_args[3]))
+        setattr(models.storage.all()[id], nb_args[2],
+                type(nb_args[2])(nb_args[3]))
         models.storage.all()[id].save()
-        models.storage.save()
 
     def emptyline(self):
         """If line is empty"""
