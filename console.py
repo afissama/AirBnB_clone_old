@@ -6,6 +6,7 @@ import cmd
 import sys
 import models
 from models.base_model import BaseModel
+from models.user import User
 import inspect
 
 
@@ -69,7 +70,12 @@ class HBNBCommand(cmd.Cmd):
         if len(nb_args) and (not self.check_if_args_is_correct(nb_args, True)):
             return
 
-        print([str(obj) for obj in models.storage.all().values()])
+        objs = models.storage.all()
+        if len(nb_args):
+            print([
+                str(objs[key]) for key in objs.keys()
+                if str(key).startswith(nb_args[0])
+            ])
 
     def do_update(self, args):
         """ Updates an instance based on the class name and id"""
