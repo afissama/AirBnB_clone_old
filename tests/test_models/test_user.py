@@ -47,6 +47,8 @@ class TestUser(unittest.TestCase):
         loaded_user = all_objs[user_id]
 
         self.assertIn(user_id, all_objs.keys())
+        self.assertEqual(my_user.email, loaded_user.email)
+        self.assertEqual(my_user.password, loaded_user.password)
         self.assertEqual(my_user.first_name, loaded_user.first_name)
         self.assertEqual(my_user.last_name, loaded_user.last_name)
 
