@@ -31,18 +31,18 @@ class TestUser(unittest.TestCase):
 
     def test_firstname(self):
         """
-        Test first name 
+        Test first name
         attribue
         """
         my_user = User()
         my_user.first_name = "Betty"
         my_user.last_name = "Bar"
         my_user.email = "airbnb@mail.com"
-        my_user.password = "root"  
+        my_user.password = "root"
         my_user.save()
 
         all_objs = models.storage.all()
-        
+
         user_id = "User.{}".format(my_user.id)
         loaded_user = all_objs[user_id]
 
@@ -52,10 +52,9 @@ class TestUser(unittest.TestCase):
         self.assertEqual(my_user.first_name, loaded_user.first_name)
         self.assertEqual(my_user.last_name, loaded_user.last_name)
 
-
     def test_instance_param(self):
         """Test if all param are str"""
-        
+
         my_user = User()
         self.assertIsInstance(my_user.email, str)
         self.assertIsInstance(my_user.password, str)

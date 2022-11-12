@@ -127,7 +127,6 @@ class HBNBCommand(cmd.Cmd):
         cls_name = nb_args[0]
         cmd_ = nb_args[1]
 
-
         if ("(" not in cmd_):
             return super().default(arg)
 

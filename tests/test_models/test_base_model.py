@@ -8,6 +8,7 @@ from models.base_model import BaseModel
 from datetime import datetime
 import time
 
+
 class TestBase(unittest.TestCase):
     """
     Some functions to test the base class
@@ -24,14 +25,16 @@ class TestBase(unittest.TestCase):
         Test current date value
         """
         base1 = BaseModel()
-        self.assertEqual(base1.created_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
+        self.assertEqual(base1.created_at.replace(microsecond=0),
+                         datetime.utcnow().replace(microsecond=0))
 
     def test_update_date(self):
         """
         Test update date value
         """
         base1 = BaseModel()
-        self.assertEqual(base1.updated_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
+        self.assertEqual(base1.updated_at.replace(microsecond=0),
+                         datetime.utcnow().replace(microsecond=0))
 
     def test_update_after_save_date(self):
         """
@@ -40,7 +43,8 @@ class TestBase(unittest.TestCase):
         base1 = BaseModel()
         time.sleep(1)
         base1.save()
-        self.assertEqual(base1.updated_at.replace(microsecond=0), datetime.utcnow().replace(microsecond=0))
+        self.assertEqual(base1.updated_at.replace(microsecond=0),
+                         datetime.utcnow().replace(microsecond=0))
 
     def test_to_dict(self):
         """
@@ -52,9 +56,11 @@ class TestBase(unittest.TestCase):
         _to_dict = copy.deepcopy(base1.__dict__)
 
         _to_dict['__class__'] = "BaseModel"
-        _to_dict['updated_at'] = base1.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        _to_dict['updated_at'] = base1.updated_at.\
+            strftime("%Y-%m-%dT%H:%M:%S.%f")
         _to_dict['id'] = base1.id
-        _to_dict['created_at'] = base1.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        _to_dict['created_at'] = base1.created_at.\
+            strftime("%Y-%m-%dT%H:%M:%S.%f")
 
         _to_dict['__class__'] = base1.__class__.__name__
         self.assertDictEqual(base1.to_dict(), _to_dict)
@@ -81,10 +87,11 @@ class TestBase(unittest.TestCase):
         base0.name = "TestCase"
         base0.age = "No"
         basejson = base0.to_dict()
-    
+
         base1 = BaseModel(**basejson)
         self.assertEqual(base1.name, "TestCase")
-        self.assertTrue("BaseModel.{}".format(base1.id) in models.storage.all())
+        self.assertTrue("BaseModel.{}".
+                        format(base1.id) in models.storage.all())
 
     def test_save_withstorage(self):
         """
@@ -101,8 +108,9 @@ class TestBase(unittest.TestCase):
         base0.save()
         models.storage.reload()
         objs = models.storage.all()
-        self.assertEqual(objs["BaseModel.{}".format(base0.id)].updated_at, base0.updated_at)
-    
+        self.assertEqual(objs["BaseModel.{}".
+                         format(base0.id)].updated_at, base0.updated_at)
+
     def test_save_updates_file(self):
         bm = BaseModel()
         bm.save()

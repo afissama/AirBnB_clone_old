@@ -51,7 +51,7 @@ class TestFileStorage(unittest.TestCase):
         loads_obj = {}
         with open("file.json", encoding="utf-8") as f:
             loads_obj = json.load(f)
-        
+
         self.assertTrue("BaseModel.{}".format(base_0.id) in loads_obj.keys())
         self.assertTrue("BaseModel.{}".format(base_1.id) in loads_obj.keys())
 

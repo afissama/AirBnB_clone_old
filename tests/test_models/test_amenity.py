@@ -4,8 +4,8 @@ import unittest
 from models.amenity import Amenity
 
 
-class TestCity(unittest.TestCase):
-    """City testing class
+class TestAmenity(unittest.TestCase):
+    """Amenity testing class
 
     Args:
         unittest (_type_): _description_
@@ -14,4 +14,3 @@ class TestCity(unittest.TestCase):
         """Unittest Class"""
         amenity = Amenity()
         self.assertIsInstance(amenity.name, str)
-
