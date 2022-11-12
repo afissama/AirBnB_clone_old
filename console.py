@@ -126,27 +126,26 @@ class HBNBCommand(cmd.Cmd):
         cls_name = nb_args[0]
         cmd_ = nb_args[1]
 
-        if str(cmd_).startswith(("show", "update")):
 
-            if ("(" not in cmd_):
-                return super().default(arg)
+        if ("(" not in cmd_):
+            return super().default(arg)
 
-            tab_args = cmd_.split("(")
+        tab_args = cmd_.split("(")
 
-            if not len(tab_args):
-                return super().default(arg)
+        if not len(tab_args):
+            return super().default(arg)
 
-            cmd_ = tab_args[0]
+        cmd_ = tab_args[0]
 
-            if ")" not in tab_args[1]:
-                return super().default(arg)
+        if ")" not in tab_args[1]:
+            return super().default(arg)
 
-            s_arg = tab_args[1].replace(")", "")
+        s_arg = tab_args[1].replace(")", "")
 
-            if "," in tab_args[1]:
-                s_arg = s_arg.replace(",", "")
+        if "," in tab_args[1]:
+            s_arg = s_arg.replace(",", "")
 
-            cls_name = cls_name + " " + s_arg
+        cls_name = cls_name + " " + s_arg
 
         if cmd_ in arg_dict.keys():
             arg_dict[cmd_](cls_name)
