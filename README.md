@@ -27,3 +27,43 @@ Create a model :
 ```
 create <ModelName>
 ```
+
+show all model : 
+
+```
+all <ModelName>
+```
+or
+```
+<ModelName>.all()
+```
+
+show a model : 
+
+```
+show <ModelName> <object id>
+```
+or
+```
+<ModelName>.show(<object_id>)
+```
+
+destroy a model : 
+
+```
+destroy <ModelName> <object id>
+```
+or
+```
+<ModelName>.destroy(<obj_id>)
+```
+
+update a model : 
+
+```
+update <ModelName> <object id> <attribute_name> <value>
+```
+or
+```
+<ModelName>.update(<object id>, <attribute_name>, <value>)
+```
