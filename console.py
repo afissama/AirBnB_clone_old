@@ -69,17 +69,22 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representation
         """
-
         nb_args = args.split()
+        objs = models.storage.all()
+
         if len(nb_args) and (not self.check_if_args_is_correct(nb_args, True)):
             return
 
-        objs = models.storage.all()
         if len(nb_args):
             print([
                 str(objs[key]) for key in objs.keys()
                 if str(key).startswith(nb_args[0])
             ])
+            return
+
+        print([
+            str(objs[key]) for key in objs.keys()
+        ])
 
     def do_update(self, args):
         """ Updates an instance based on the class name and id"""
@@ -104,6 +109,62 @@ class HBNBCommand(cmd.Cmd):
         setattr(models.storage.all()[id], nb_args[2],
                 type(nb_args[2])(nb_args[3]))
         models.storage.all()[id].save()
+
+    def default(self, arg):
+        """The default method"""
+        arg_dict = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "update": self.do_update,
+            "count": self.count_instance
+        }
+        nb_args = arg.split(".")
+
+        if not len(nb_args):
+            return super().default(arg)
+
+        cls_name = nb_args[0]
+        cmd_ = nb_args[1]
+
+        if str(cmd_).startswith(("show", "update")):
+
+            if ("(" not in cmd_):
+                return super().default(arg)
+
+            tab_args = cmd_.split("(")
+
+            if not len(tab_args):
+                return super().default(arg)
+
+            cmd_ = tab_args[0]
+
+            if ")" not in tab_args[1]:
+                return super().default(arg)
+
+            s_arg = tab_args[1].replace(")", "")
+
+            if "," in tab_args[1]:
+                s_arg = s_arg.replace(",", "")
+
+            cls_name = cls_name + " " + s_arg
+
+        if cmd_ in arg_dict.keys():
+            arg_dict[cmd_](cls_name)
+            return
+
+        return super().default(arg)
+
+    def count_instance(self, args):
+        """Count instance"""
+        nb_args = args.split()
+        if not self.check_if_args_is_correct(nb_args, True):
+            return
+
+        objs = models.storage.all()
+        print(len(
+                [str(objs[key]) for key in objs.keys()
+                    if str(key).startswith(nb_args[0])]
+            ))
 
     def emptyline(self):
         """If line is empty"""
