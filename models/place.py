@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Place Representation module 
+Place Representation module
 """
 import models
 from models.base_model import BaseModel
@@ -11,7 +11,7 @@ class Place(BaseModel):
     Represent a Place
     Inherit from base model
     """
-    
+
     city_id = ""
     user_id = ""
     name = ""

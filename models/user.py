@@ -3,6 +3,7 @@
 """
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """User Class
         Public attrs:
@@ -15,10 +16,3 @@ class User(BaseModel):
     password = ""
     first_name = ""
     last_name = ""
-
-    def __init__(self, *args, **kwargs):
-        """Call when instantiate the object"""
-        if len(kwargs):
-            super().__init__(**kwargs)
-            return
-        super().__init__()
