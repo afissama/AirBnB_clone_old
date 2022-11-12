@@ -6,7 +6,7 @@ import models
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class Review(BaseModel):
     """
     Represent a Review
     Inherit from base model
