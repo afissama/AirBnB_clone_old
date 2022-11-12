@@ -5,24 +5,25 @@ This is the first step towards building your first full web application: the Air
 
 ## HOW TO START IT
 
-# Required Environment
+## Required Environment
 You need python3.4+ to run the project
-'''
-sudo apt-get install python3
-'''
 
-# Run Project
+```
+sudo apt-get install python3
+```
+
+## Run Project
 
 In Console
 
-'''
+```
 ./console.py
-'''
+```
 
 # USE
 
 Create a model : 
 
-'''
+```
 create <ModelName>
-'''
+```
