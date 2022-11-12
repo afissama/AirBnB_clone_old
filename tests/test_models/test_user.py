@@ -47,6 +47,7 @@ class TestUser(unittest.TestCase):
         loaded_user = all_objs[user_id]
 
         self.assertIn(user_id, all_objs.keys())
+        self.assertTrue(hasattr(my_user, "email"))
         self.assertEqual(my_user.email, loaded_user.email)
         self.assertEqual(my_user.password, loaded_user.password)
         self.assertEqual(my_user.first_name, loaded_user.first_name)
@@ -60,3 +61,10 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(my_user.password, str)
         self.assertIsInstance(my_user.first_name, str)
         self.assertIsInstance(my_user.last_name, str)
+
+    def test_has_attr(self):
+        """Test if obj has attr"""
+
+        my_user = User()
+        self.assertTrue(hasattr(my_user, "email"))
+        
