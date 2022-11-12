@@ -49,3 +49,13 @@ class TestUser(unittest.TestCase):
         self.assertIn(user_id, all_objs.keys())
         self.assertEqual(my_user.first_name, loaded_user.first_name)
         self.assertEqual(my_user.last_name, loaded_user.last_name)
+
+
+    def test_instance_param(self):
+        """Test if all param are str"""
+        
+        my_user = User()
+        self.assertIsInstance(my_user.email, str)
+        self.assertIsInstance(my_user.password, str)
+        self.assertIsInstance(my_user.first_name, str)
+        self.assertIsInstance(my_user.last_name, str)
