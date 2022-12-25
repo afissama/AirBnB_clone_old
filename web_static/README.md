@@ -15,3 +15,10 @@ HTML page that display a simple header and footer without inline style
 * add Icon
 * add logo
 * add search bar
+
+### 5. More filters
+Write an HTML page that displays a header, footer and a filters box.
+* add Icon
+* add logo
+* add search bar
+* more filters options
