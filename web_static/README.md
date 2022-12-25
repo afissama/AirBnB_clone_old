@@ -7,3 +7,11 @@ HTML page that display a simple header and footer without inline style
 HTML page that display a simple header and footer without inline style
 but with separate files
 ### 3. Zoning done!
+HTML page that display a simple header and footer without inline style
+* add Icon
+* add logo
+### 4. Search
+HTML page that display a simple header and footer without inline style
+* add Icon
+* add logo
+* add search bar
