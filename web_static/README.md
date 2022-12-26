@@ -22,3 +22,13 @@ Write an HTML page that displays a header, footer and a filters box.
 * add logo
 * add search bar
 * more filters options
+### 6. Its's Hover
+Write an HTML page that displays a header, footer and a filters box with dropdown
+
+* add Icon
+* add logo
+* add search bar
+* more filters options
+* add dropdown
+
+### 7. Display results
