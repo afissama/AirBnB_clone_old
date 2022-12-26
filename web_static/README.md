@@ -32,3 +32,14 @@ Write an HTML page that displays a header, footer and a filters box with dropdow
 * add dropdown
 
 ### 7. Display results
+Write an HTML page that displays a header, footer and a filters box with dropdown
+
+* add Icon
+* add logo
+* add search bar
+* more filters options
+* add dropdown
+* add articles
+
+### 8. More details
+Write an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search.
